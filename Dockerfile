@@ -34,7 +34,7 @@ RUN cd /usr/share/GeoIP; wget -c http://geolite.maxmind.com/download/geoip/datab
 RUN cp /etc/GeoIP.conf.default /etc/GeoIP.conf
 RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 RUN mkdir -p /var/run/sshd && sed -i "s/UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g" /etc/ssh/sshd_config && sed -i "s/UsePAM.*/UsePAM no/g" /etc/ssh/sshd_config && sed -i "s/PermitRootLogin.*/PermitRootLogin yes/g" /etc/ssh/sshd_config
-ENV NGINX_VERSION 1.7.3
+ENV NGINX_VERSION 1.7.4
 ENV NGINX_STICKY_VERSION 1.2.5
 ENV NGINX_STICKY_HASH bd312d586752
 RUN cd /opt; \
@@ -69,7 +69,7 @@ VOLUME /usr/local/nginx/conf/sites-enabled
 VOLUME /usr/local/nginx/conf/includes
 VOLUME /usr/local/nginx/logs
 VOLUME /usr/local/nginx/html
-
+VOLUME /opt/uploaded
 
 # Expose ports.
 EXPOSE 80 443
